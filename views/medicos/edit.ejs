@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Médico</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Editar Médico</h1>
+  <form action="/medicos/<%= medico.id %>" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" value="<%= medico.nome %>" required><br>
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" name="cpf" value="<%= medico.cpf %>" required><br>
+    <label for="rg">RG:</label>
+    <input type="text" id="rg" name="rg" value="<%= medico.rg %>" required><br>
+    <label for="numero_classe">Número da Classe:</label>
+    <input type="text" id="numero_classe" name="numero_classe" value="<%= medico.numero_classe %>" required><br>
+    <label for="profissao">Profissão:</label>
+    <input type="text" id="profissao" name="profissao" value="<%= medico.profissao %>" required><br>
+    <button type="submit">Salvar</button>
+  </form>
+  <a href="/medicos">Voltar</a>
+</body>
+</html>

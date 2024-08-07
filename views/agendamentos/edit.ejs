@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Agendamento</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Editar Agendamento</h1>
+  <form action="/agendamentos/<%= agendamento.id %>" method="post">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" value="<%= agendamento.data %>" required><br>
+    <label for="horario">Horário:</label>
+    <input type="time" id="horario" name="horario" value="<%= agendamento.horario %>" required><br>
+    <label for="nome_paciente_id">Paciente:</label>
+    <select id="nome_paciente_id" name="nome_paciente_id" required>
+      <% pacientes.forEach(paciente => { %>
+        <option value="<%= paciente.id %>" <%= agendamento.nome_paciente_id == paciente.id ? 'selected' : '' %>><%= paciente.nome %></option>
+      <% }); %>
+    </select><br>
+    <label for="nome_medico_id">Médico:</label>
+    <select id="nome_medico_id" name="nome_medico_id" required>
+      <% medicos.forEach(medico => { %>
+        <option value="<%= medico.id %>" <%= agendamento.nome_medico_id == medico.id ? 'selected' : '' %>><%= medico.nome %></option>
+      <% }); %>
+    </select><br>
+    <button type="submit">Salvar</button>
+  </form>
+  <a href="/agendamentos">Voltar</a>
+</body>
+</html>

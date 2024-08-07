@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacientes</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Pacientes</h1>
+  <a href="/pacientes/new">Novo Paciente</a>
+  <ul>
+    <% pacientes.forEach(paciente => { %>
+      <li>
+        <a href="/pacientes/<%= paciente.id %>"><%= paciente.nome %></a>
+        (<a href="/pacientes/<%= paciente.id %>/edit">Editar</a>)
+        <form action="/pacientes/<%= paciente.id %>/delete" method="post" style="display:inline;">
+          <button type="submit">Deletar</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>

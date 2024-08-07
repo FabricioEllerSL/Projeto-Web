@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamentos</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Agendamentos</h1>
+  <a href="/agendamentos/new">Novo Agendamento</a>
+  <ul>
+    <% agendamentos.forEach(agendamento => { %>
+      <li>
+        <a href="/agendamentos/<%= agendamento.id %>"><%= agendamento.data %> - <%= agendamento.horario %> - Paciente: <%= agendamento.Paciente.nome %> - Médico: <%= agendamento.Medico.nome %></a>
+        (<a href="/agendamentos/<%= agendamento.id %>/edit">Editar</a>)
+        <form action="/agendamentos/<%= agendamento.id %>/delete" method="post" style="display:inline;">
+          <button type="submit">Deletar</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
