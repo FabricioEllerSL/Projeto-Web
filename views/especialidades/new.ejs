@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Nova Especialidade</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Médico</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Nova Especialidade</h1>
-  <form action="/especialidades" method="POST">
+  <h1 class="titulo-principal">Nova Especialidade</h1>
+  <form class="form-preencher" action="/especialidades" method="POST">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" required>
     <button type="submit">Salvar</button>

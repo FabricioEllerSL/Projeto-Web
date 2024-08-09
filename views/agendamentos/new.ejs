@@ -7,26 +7,25 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Novo Agendamento</h1>
-  <form action="/agendamentos" method="post">
+  <h1 class="titulo-principal">Novo Agendamento</h1>
+  <form class="form-preencher" action="/agendamentos" method="post">
     <label for="data">Data:</label>
     <input type="date" id="data" name="data" required><br>
-    <label for="horario">Horário:</label>
-    <input type="time" id="horario" name="horario" required><br>
+    <label for="horario">Horário:</label> 
+    <input type="time" id="horario" name="horario" required style="margin-bottom: 10px;"><br>
     <label for="nome_paciente">Paciente:</label>
-    <select id="nome_paciente" name="nome_paciente" required>
+    <select id="nome_paciente" name="nome_paciente" required style="margin-bottom: 10px;">
       <% pacientes.forEach(paciente => { %>
         <option value="<%= paciente.id %>"><%= paciente.nome %></option>
       <% }); %>
     </select><br>
     <label for="nome_medico">Médico:</label>
-    <select id="nome_medico" name="nome_medico" required>
+    <select id="nome_medico" name="nome_medico" required style="margin-bottom: 10px;">
       <% medicos.forEach(medico => { %>
         <option value="<%= medico.id %>"><%= medico.nome %></option>
       <% }); %>
     </select><br>
     <button type="submit">Salvar</button>
   </form>
-  <a href="/agendamentos">Voltar</a>
 </body>
 </html>

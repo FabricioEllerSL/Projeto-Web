@@ -7,26 +7,25 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Editar Agendamento</h1>
-  <form action="/agendamentos/<%= agendamento.id %>" method="post">
+  <h1 class="titulo-principal">Editar Agendamento</h1>
+  <form class="form-preencher" action="/agendamentos/<%= agendamento.id %>" method="post">
     <label for="data">Data:</label>
     <input type="date" id="data" name="data" value="<%= agendamento.data %>" required><br>
     <label for="horario">Horário:</label>
-    <input type="time" id="horario" name="horario" value="<%= agendamento.horario %>" required><br>
+    <input type="time" id="horario" name="horario" value="<%= agendamento.horario %>" required style="margin-bottom: 10px;"><br>
     <label for="nome_paciente_id">Paciente:</label>
-    <select id="nome_paciente_id" name="nome_paciente_id" required>
+    <select id="nome_paciente_id" name="nome_paciente_id" required style="margin-bottom: 10px;">
       <% pacientes.forEach(paciente => { %>
         <option value="<%= paciente.id %>" <%= agendamento.nome_paciente_id == paciente.id ? 'selected' : '' %>><%= paciente.nome %></option>
       <% }); %>
     </select><br>
     <label for="nome_medico_id">Médico:</label>
-    <select id="nome_medico_id" name="nome_medico_id" required>
+    <select id="nome_medico_id" name="nome_medico_id" required style="margin-bottom: 10px;">
       <% medicos.forEach(medico => { %>
         <option value="<%= medico.id %>" <%= agendamento.nome_medico_id == medico.id ? 'selected' : '' %>><%= medico.nome %></option>
       <% }); %>
     </select><br>
-    <button type="submit">Salvar</button>
+    <button type="submit" style="margin-bottom: 10px;">Salvar</button>
   </form>
-  <a href="/agendamentos">Voltar</a>
 </body>
 </html>

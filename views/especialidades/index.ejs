@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Especialidades</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Lista de Especialidades</h1>
-  <a href="/especialidades/new">Adicionar Especialidade</a>
-  <ul>
+  <h1 class="titulo-principal">Especialidades</h1>
+  <a href="/" class="novo-paciente"><</a>
+  <a href="/especialidades/new" class="novo-paciente">Nova Especialidade</a>
+  <div class="container-pacientes">
     <% especialidades.forEach(especialidade => { %>
-      <li>
-        <%= especialidade.nome %>
-        <form action="/especialidades/<%= especialidade.id %>/delete" method="POST" style="display:inline;">
-          <button type="submit">Deletar</button>
+      <div class="paciente">
+        <a class="paciente-nome" href="/especialidades">Especialidade: <%= especialidade.nome %></a>
+        <form action="/especialidades/<%= especialidade.id %>/delete" method="post" style="display:indivne;">
+          <button class="botao-deletar" type="submit">Deletar</button>
         </form>
-      </li>
-    <% }) %>
-  </ul>
+      </div>
+    <% }); %>
+  </div>
 </body>
 </html>

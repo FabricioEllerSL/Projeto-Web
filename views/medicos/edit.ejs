@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Médico</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Editar Médico</h1>
-  <form action="/medicos/<%= medico.id %>" method="POST">
+  <h1 class="titulo-principal">Editar Médico</h1>
+  <form class="form-preencher" action="/medicos/<%= medico.id %>" method="POST">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" value="<%= medico.nome %>" required>
     <label for="cpf">CPF:</label>
@@ -17,7 +20,7 @@
     <label for="profissao">Profissão:</label>
     <input type="text" name="profissao" value="<%= medico.profissao %>" required>
     <label for="especialidadeId">Especialidade:</label>
-    <select name="especialidadeId" required>
+    <select name="especialidadeId" required style="margin-bottom: 10px;">
       <% especialidades.forEach(especialidade => { %>
         <option value="<%= especialidade.id %>" <%= medico.especialidadeId === especialidade.id ? 'selected' : '' %>><%= especialidade.nome %></option>
       <% }) %>

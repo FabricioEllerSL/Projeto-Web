@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Médico</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Novo Médico</h1>
-  <form action="/medicos" method="POST">
+  <h1 class="titulo-principal">Cadastro de Novo Médico</h1>
+  <form class="form-preencher" action="/medicos" method="POST">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" required>
     <label for="cpf">CPF:</label>
@@ -17,7 +20,7 @@
     <label for="profissao">Profissão:</label>
     <input type="text" name="profissao" required>
     <label for="especialidadeId">Especialidade:</label>
-    <select name="especialidadeId" required>
+    <select name="especialidadeId" required style="margin-bottom: 10px;">
       <% especialidades.forEach(especialidade => { %>
         <option value="<%= especialidade.id %>"><%= especialidade.nome %></option>
       <% }) %>

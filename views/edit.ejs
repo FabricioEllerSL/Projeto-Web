@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Editar Paciente</h1>
-  <form action="/pacientes/<%= paciente.id %>" method="post">
+  <h1 class="titulo-principal">Editar Paciente</h1>
+  <form class="form-preencher" action="/pacientes/<%= paciente.id %>" method="post">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" value="<%= paciente.nome %>" required><br>
     <label for="cpf">CPF:</label>

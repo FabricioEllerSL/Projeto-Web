@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Detalhes do Agendamento</h1>
-  <p><strong>Data:</strong> <%= agendamento.data %></p>
-  <p><strong>Horário:</strong> <%= agendamento.horario %></p>
-  <p><strong>Paciente:</strong> <%= agendamento.Paciente.nome %></p>
-  <p><strong>Médico:</strong> <%= agendamento.Medico.nome %></p>
-  <a href="/agendamentos">Voltar</a>
+  <h1 class="titulo-principal">Detalhes do Agendamento</h1>
+  <div class="container">
+    <p><strong>Data:</strong> <%= agendamento.data %></p>
+    <p><strong>Horário:</strong> <%= agendamento.horario %></p>
+    <p><strong>Paciente:</strong> <%= agendamento.Paciente.nome %></p>
+    <p><strong>Médico:</strong> <%= agendamento.Medico.nome %></p>
+    <a class="botao-acao" href="/agendamentos">Voltar</a>
+  </div>
 </body>
 </html>

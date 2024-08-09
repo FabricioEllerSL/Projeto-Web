@@ -7,18 +7,20 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Agendamentos</h1>
-  <a href="/agendamentos/new">Novo Agendamento</a>
-  <ul>
+  <h1 class="titulo-principal">Agendamentos</h1>
+  <a href="/" class="novo-paciente"><</a>
+  <a href="/agendamentos/new" class="novo-paciente">Novo Agendamento</a>
+  <div class="container-pacientes">
     <% agendamentos.forEach(agendamento => { %>
-      <li>
-        <a href="/agendamentos/<%= agendamento.id %>"><%= agendamento.data %> - <%= agendamento.horario %> - Paciente: <%= agendamento.Paciente.nome %> - Médico: <%= agendamento.Medico.nome %></a>
-        (<a href="/agendamentos/<%= agendamento.id %>/edit">Editar</a>)
-        <form action="/agendamentos/<%= agendamento.id %>/delete" method="post" style="display:inline;">
-          <button type="submit">Deletar</button>
+      <div class="paciente">
+        <a class="paciente-nome" href="/agendamentos/<%= agendamento.id %>">Paciente: <%= agendamento.Paciente.nome %> / Médico: <%= agendamento.Medico.nome %></a>
+        <a class="botao-acao" href="/agendamentos/<%= agendamento.id %>/edit">Editar</a>
+        <a class="botao-acao" href="/agendamentos/<%= agendamento.id %>/">Visualizar</a>
+        <form action="/agendamentos/<%= agendamento.id %>/delete" method="post" style="display:indivne;">
+          <button class="botao-deletar" type="submit">Deletar</button>
         </form>
-      </li>
+      </div>
     <% }); %>
-  </ul>
+  </div>
 </body>
 </html>
