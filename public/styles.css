@@ -1,64 +1,160 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f7baba;
     margin: 0;
     padding: 0;
   }
-  
-  h1 {
-    color: #333;
-  }
-  
-  a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  form {
-    margin: 20px 0;
-  }
-  
-  label {
-    display: block;
-    margin-top: 10px;
-  }
-  
-  input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    background-color: white;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
+
+/* TELA PRINCIPAL DE ACESSO AOS MODULOS */
+
+.titulo-principal{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  font-size: 50px;
+}
+
+.titulo-secundario{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  font-size: 20px;
+  color: rgb(102, 102, 102);
+}
+
+.engloba-modulos{
+  background-color: #fff;
+  width: 80%;
+  margin: 10px auto;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+}
+
+.modulo{
+  width: 48%;
+  margin: 10px 5px;
+  text-align: center;
+  background-color: #995f5f;
+  box-sizing: border-box;
+  border-radius: 20px;  
+}
+
+.modulo:hover{
+  width: 48%;
+  margin: 10px 5px;
+  text-align: center;
+  background-color: #995f5f;
+  box-sizing: border-box;
+  scale: 1.03;
+  transition: 0.3s;  
+  border-radius: 20px;
+}
+
+.modulo-links{
+  text-decoration: none;
+  color: #f7baba;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+
+.modulo-links:hover{
+  text-decoration: none;
+  color: #000;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #fc9f9f;
+}
+
+
+/* ------------------------------ PACIENTES ------------------------------ */
+
+/* GERENCIAR PACIENTES */
+
+.novo-paciente{
+  background-color: #a84e4e;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 25px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 25px;
+  margin-left: 30px;
+}
+
+.novo-paciente:hover{
+  background-color: #813c3c;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 25px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 25px;
+  margin-left: 30px;
+  transition: 0.3s;
+}
+
+.container-pacientes{
+  margin: 50px 30px;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 30px;
+}
+
+.paciente{
+  background-color: #813c3c;
+  margin: 10px 0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.paciente-nome{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.botao-acao{
+  text-decoration: none;
+  color: #fff;
+  background-color: #a84e4e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.botao-acao:hover{
+  text-decoration: none;
+  color: #fff;
+  background-color: #c75c5c;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.botao-deletar{
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(194, 0, 0);
+  padding: 7px 12px;
+  border-radius: 5px;
+  margin: 0 10px;
+  border: none;
+}
+
+.botao-deletar:hover{
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff0000;
+  padding: 7px 12px;
+  border-radius: 5px;
+  margin: 0 10px;
+  border: none;
+  cursor: pointer;
+}

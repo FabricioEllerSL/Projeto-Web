@@ -18,8 +18,8 @@
   <p><strong>Complemento:</strong> <%= paciente.complemento %></p>
   <p><strong>CEP:</strong> <%= paciente.cep %></p>
   <p><strong>Ponto de Referência:</strong> <%= paciente.ponto_referencia %></p>
-  <p><strong>Nome da Mãe:</strong> <%= paciente.nome_mae %></p>
-  <p><strong>Nome do Pai:</strong> <%= paciente.nome_pai %></p>
+  <p><strong>Nome do Pai:</strong> <%= paciente.nome_mae ? paciente.nome_mae : 'Não informado...' %></p> 
+  <p><strong>Nome do Pai:</strong> <%= paciente.nome_pai ? paciente.nome_pai : 'Não informado...' %></p> 
   <p><strong>Telefone:</strong> <%= paciente.telefone %></p>
   <a href="/pacientes">Voltar</a>
 </body>

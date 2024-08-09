@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Especialidade = require('./Especialidade')
 
 
 const Medico = sequelize.define('Medicos', {
@@ -9,5 +10,7 @@ const Medico = sequelize.define('Medicos', {
   numero_classe: { type: DataTypes.STRING, allowNull: false },
   profissao: { type: DataTypes.STRING, allowNull: false }
 });
+
+Medico.belongsTo(Especialidade, { foreignKey: 'especialidadeId' , onDelete: 'SET NULL'});
 
 module.exports = Medico;

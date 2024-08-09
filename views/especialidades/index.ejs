@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Especialidades</title>
+</head>
+<body>
+  <h1>Lista de Especialidades</h1>
+  <a href="/especialidades/new">Adicionar Especialidade</a>
+  <ul>
+    <% especialidades.forEach(especialidade => { %>
+      <li>
+        <%= especialidade.nome %>
+        <form action="/especialidades/<%= especialidade.id %>/delete" method="POST" style="display:inline;">
+          <button type="submit">Deletar</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

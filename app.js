@@ -4,6 +4,7 @@ const sequelize = require('./config/database');
 const Paciente = require('./models/Paciente');
 const Medico = require('./models/Medico');
 const Agendamento = require('./models/Agendamento');
+const Especialidade = require('./models/Especialidade');
 
 
 const app = express();
@@ -32,6 +33,11 @@ app.get('/pacientes', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+app.get('/', (req, res) => {
+  res.render('mainPage');
+});
+
 
 // Formulário para criar novo paciente
 app.get('/pacientes/new', (req, res) => {
@@ -106,46 +112,82 @@ app.post('/pacientes/:id/delete', async (req, res) => {
   }
 });
 
-// Rotas para Medico
+// Listar todas as especialidades
+app.get('/especialidades', async (req, res) => {
+  const especialidades = await Especialidade.findAll();
+  res.render('especialidades/index', { especialidades });
+});
+
+// Formulário para criar nova especialidade
+app.get('/especialidades/new', (req, res) => {
+  res.render('especialidades/new');
+});
+
+// Criar nova especialidade
+app.post('/especialidades', async (req, res) => {
+  const { nome } = req.body;
+  await Especialidade.create({ nome });
+  res.redirect('/especialidades');
+});
+
+// Deletar especialidade
+app.post('/especialidades/:id/delete', async (req, res) => {
+  await Especialidade.destroy({ where: { id: req.params.id } });
+  res.redirect('/especialidades');
+});
+
+// Listar todos os médicos
 app.get('/medicos', async (req, res) => {
-    const medicos = await Medico.findAll();
-    res.render('medicos/index', { medicos });
-  });
-  
-  app.get('/medicos/new', (req, res) => {
-    res.render('medicos/new');
-  });
-  
-  app.post('/medicos', async (req, res) => {
-    const { nome, cpf, rg, numero_classe, profissao } = req.body;
-    await Medico.create({ nome, cpf, rg, numero_classe, profissao });
-    res.redirect('/medicos');
-  });
-  
-  app.get('/medicos/:id', async (req, res) => {
-    const medico = await Medico.findByPk(req.params.id);
+  const medicos = await Medico.findAll({ include: Especialidade });
+  res.render('medicos/index', { medicos });
+});
+
+// Formulário para criar novo médico
+app.get('/medicos/new', async (req, res) => {
+  const especialidades = await Especialidade.findAll();
+  res.render('medicos/new', { especialidades });
+});
+
+app.get('/medicos/:id', async (req, res) => {
+  try {
+    const medico = await Medico.findByPk(req.params.id, {
+      include: Especialidade
+    });
+    if (!medico) {
+      return res.status(404).send('Médico não encontrado');
+    }
     res.render('medicos/show', { medico });
-  });
-  
-  app.get('/medicos/:id/edit', async (req, res) => {
-    const medico = await Medico.findByPk(req.params.id);
-    res.render('medicos/edit', { medico });
-  });
-  
-  app.post('/medicos/:id', async (req, res) => {
-    const { nome, cpf, rg, numero_classe, profissao } = req.body;
-    await Medico.update({ nome, cpf, rg, numero_classe, profissao }, {
-      where: { id: req.params.id }
-    });
-    res.redirect('/medicos');
-  });
-  
-  app.post('/medicos/:id/delete', async (req, res) => {
-    await Medico.destroy({
-      where: { id: req.params.id }
-    });
-    res.redirect('/medicos');
-  });
+  } catch (error) {
+    console.error('Erro ao buscar médico:', error);
+    res.status(500).send('Erro interno do servidor');
+  }
+});
+// Criar novo médico
+app.post('/medicos', async (req, res) => {
+  const { nome, cpf, rg, numero_classe, profissao, especialidadeId } = req.body;
+  await Medico.create({ nome, cpf, rg, numero_classe, profissao, especialidadeId });
+  res.redirect('/medicos');
+});
+
+// Formulário para editar médico
+app.get('/medicos/:id/edit', async (req, res) => {
+  const medico = await Medico.findByPk(req.params.id);
+  const especialidades = await Especialidade.findAll();
+  res.render('medicos/edit', { medico, especialidades });
+});
+
+// Atualizar médico
+app.post('/medicos/:id', async (req, res) => {
+  const { nome, cpf, rg, numero_classe, profissao, especialidadeId } = req.body;
+  await Medico.update({ nome, cpf, rg, numero_classe, profissao, especialidadeId }, { where: { id: req.params.id } });
+  res.redirect('/medicos');
+});
+
+// Deletar médico
+app.post('/medicos/:id/delete', async (req, res) => {
+  await Medico.destroy({ where: { id: req.params.id } });
+  res.redirect('/medicos');
+});
 
   app.get('/agendamentos', async (req, res) => {
     const agendamentos = await Agendamento.findAll({ include: [Paciente, Medico] });

@@ -7,18 +7,20 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Pacientes</h1>
-  <a href="/pacientes/new">Novo Paciente</a>
-  <ul>
+  <h1 class="titulo-principal">Pacientes</h1>
+  <a href="/" class="novo-paciente"><</a>
+  <a href="/pacientes/new" class="novo-paciente">Novo Paciente</a>
+  <div class="container-pacientes">
     <% pacientes.forEach(paciente => { %>
-      <li>
-        <a href="/pacientes/<%= paciente.id %>"><%= paciente.nome %></a>
-        (<a href="/pacientes/<%= paciente.id %>/edit">Editar</a>)
-        <form action="/pacientes/<%= paciente.id %>/delete" method="post" style="display:inline;">
-          <button type="submit">Deletar</button>
+      <div class="paciente">
+        <a class="paciente-nome" href="/pacientes/<%= paciente.id %>"><%= paciente.nome %></a>
+        <a class="botao-acao" href="/pacientes/<%= paciente.id %>/edit">Editar</a>
+        <a class="botao-acao" href="/pacientes/<%= paciente.id %>/">Visualizar</a>
+        <form action="/pacientes/<%= paciente.id %>/delete" method="post" style="display:indivne;">
+          <button class="botao-deletar" type="submit">Deletar</button>
         </form>
-      </li>
+      </div>
     <% }); %>
-  </ul>
+  </div>
 </body>
 </html>

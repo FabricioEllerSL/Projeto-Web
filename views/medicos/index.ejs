@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Médicos</title>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Médicos</h1>
-  <a href="/medicos/new">Novo Médico</a>
+  <h1>Lista de Médicos</h1>
+  <a href="/medicos/new">Adicionar Médico</a>
   <ul>
     <% medicos.forEach(medico => { %>
       <li>
         <a href="/medicos/<%= medico.id %>"><%= medico.nome %></a>
-        (<a href="/medicos/<%= medico.id %>/edit">Editar</a>)
-        <form action="/medicos/<%= medico.id %>/delete" method="post" style="display:inline;">
+        <a href="/medicos/<%= medico.id %>/edit">Editar</a>
+        <form action="/medicos/<%= medico.id %>/delete" method="POST" style="display:inline;">
           <button type="submit">Deletar</button>
         </form>
       </li>
-    <% }); %>
+    <% }) %>
   </ul>
 </body>
 </html>
