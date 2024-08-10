@@ -34,6 +34,7 @@ app.get('/pacientes', async (req, res) => {
   }
 });
 
+// Rota principal de acesso aos modulos
 app.get('/', (req, res) => {
   res.render('mainPage');
 });
@@ -148,6 +149,7 @@ app.get('/medicos/new', async (req, res) => {
   res.render('medicos/new', { especialidades });
 });
 
+// Exibindo o medico
 app.get('/medicos/:id', async (req, res) => {
   try {
     const medico = await Medico.findByPk(req.params.id, {
@@ -162,6 +164,7 @@ app.get('/medicos/:id', async (req, res) => {
     res.status(500).send('Erro interno do servidor');
   }
 });
+
 // Criar novo médico
 app.post('/medicos', async (req, res) => {
   const { nome, cpf, rg, numero_classe, profissao, especialidadeId } = req.body;
@@ -189,28 +192,33 @@ app.post('/medicos/:id/delete', async (req, res) => {
   res.redirect('/medicos');
 });
 
+// Exibindo agendamentos
   app.get('/agendamentos', async (req, res) => {
     const agendamentos = await Agendamento.findAll({ include: [Paciente, Medico] });
     res.render('agendamentos/index', { agendamentos });
   });
   
+// Novo agendamento
   app.get('/agendamentos/new', async (req, res) => {
     const pacientes = await Paciente.findAll();
     const medicos = await Medico.findAll();
     res.render('agendamentos/new', { pacientes, medicos });
   });
   
+  // Criando o novo agendamento
   app.post('/agendamentos', async (req, res) => {
     const { data, horario, nome_paciente, nome_medico } = req.body;
     await Agendamento.create({ data, horario, nome_paciente, nome_medico });
     res.redirect('/agendamentos');
   });
   
+  // Visualizacao de um agendamento
   app.get('/agendamentos/:id', async (req, res) => {
     const agendamento = await Agendamento.findByPk(req.params.id, { include: [Paciente, Medico] });
     res.render('agendamentos/show', { agendamento });
   });
   
+  // Editando agendamento
   app.get('/agendamentos/:id/edit', async (req, res) => {
     const agendamento = await Agendamento.findByPk(req.params.id);
     const pacientes = await Paciente.findAll();
@@ -218,6 +226,7 @@ app.post('/medicos/:id/delete', async (req, res) => {
     res.render('agendamentos/edit', { agendamento, pacientes, medicos });
   });
   
+  // Atualizando o agendamento
   app.post('/agendamentos/:id', async (req, res) => {
     const { data, horario, nome_paciente_id, nome_medico_id } = req.body;
     await Agendamento.update({ data, horario, nome_paciente_id, nome_medico_id }, {
@@ -226,6 +235,7 @@ app.post('/medicos/:id/delete', async (req, res) => {
     res.redirect('/agendamentos');
   });
   
+  //Deletando o agendamento
   app.post('/agendamentos/:id/delete', async (req, res) => {
     await Agendamento.destroy({
       where: { id: req.params.id }
